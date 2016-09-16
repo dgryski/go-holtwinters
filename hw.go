@@ -7,9 +7,8 @@ Translated from the python code at
 package holtwinters
 
 func initialTrend(series []float64, slen int) float64 {
-	var sum float64
 	slenf := float64(slen)
-	sum = 0.0
+	var sum float64
 	for i := 0; i < slen; i++ {
 		sum += (series[i+slen] - series[i]) / slenf
 	}
@@ -21,7 +20,7 @@ func initialSeasonalComponents(series []float64, slen int) []float64 {
 	seasonals := make([]float64, slen)
 	seasonAverages := make([]float64, slen)
 
-	nSeasons := int(len(series) / slen)
+	nSeasons := len(series) / slen
 	// compute season averages
 	for j := 0; j < nSeasons; j++ {
 		seasonAverages[j] = fsum(series[slen*j:slen*j+slen]) / float64(slen)
